@@ -12,20 +12,28 @@ function App() {
     setLoading(true);
     const element = document.createElement('div');
     element.innerHTML = content;
-    element.style.padding = '1px';
-    element.style.height = '1000px';
+    element.style.padding = '10px';
+    element.style.height = '1050px';
+    element.style.width = '200mm';
+   
 
   const link = document.createElement('link');
   link.rel = 'stylesheet';
   link.href = 'https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css'; // Update to the desired Tailwind version
   document.head.appendChild(link);
 
+  const link2 = document.createElement('link');
+  link2.rel = 'stylesheet';
+  link2.href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  document.head.appendChild(link2);
+
+
     const opt = {
       margin: 5,
       filename: 'document.pdf',
       image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { scale: 2 },
-      jsPDF: { unit: 'mm', format:'a4', orientation: 'portrait' }
+      html2canvas: { scale: 3 },
+      jsPDF: { unit: 'mm',format: 'a4', orientation: 'portrait' }
     };
 
     try {
@@ -34,6 +42,7 @@ function App() {
       console.error('Error generating PDF:', error);
     } finally {
       document.head.removeChild(link);
+      document.head.removeChild(link2);
       setLoading(false);
     }
   };
